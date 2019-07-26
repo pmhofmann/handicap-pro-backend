@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_144728) do
+ActiveRecord::Schema.define(version: 4) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,28 +18,34 @@ ActiveRecord::Schema.define(version: 2019_07_18_144728) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "county"
-    t.integer "yardage"
-    t.integer "par"
-    t.string "postcode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   create_table "holes", force: :cascade do |t|
+    t.bigint "course_id"
     t.integer "hole_number"
     t.integer "yardage"
     t.integer "par"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_holes_on_course_id"
   end
 
   create_table "players", force: :cascade do |t|
-    t.string "name"
-    t.float "handicap"
-    t.string "password_digest"
     t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "name"
+    t.float "hcp"
   end
 
+  create_table "scorecards", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "course_id"
+    t.integer "score"
+    t.date "date_played"
+    t.index ["course_id"], name: "index_scorecards_on_course_id"
+    t.index ["player_id"], name: "index_scorecards_on_player_id"
+  end
+
+  add_foreign_key "holes", "courses"
+  add_foreign_key "scorecards", "courses"
+  add_foreign_key "scorecards", "players"
 end
