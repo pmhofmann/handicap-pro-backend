@@ -11,7 +11,6 @@ class CoursesController < ApplicationController
     end
 
     def create
-        byebug
         course = Course.create!(course_params)
         render json: course
     end
