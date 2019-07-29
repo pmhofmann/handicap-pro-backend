@@ -29,7 +29,7 @@ private
         params.require(:player).permit(
                     :name,
                     :email,
-                    :handicap,
+                    :hcp,
                     :password)
         end
 

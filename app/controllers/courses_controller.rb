@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
     end
 
     def create
+        byebug
         course = Course.create!(course_params)
         render json: course
     end
@@ -23,9 +24,8 @@ private
         params.require(:course).permit(
                     :name,
                     :county,
-                    :yardage,
-                    :par,
-                :postcode)
+                    :url,
+                holes:[:yardage, :hole_number, :par])
         end
 
     end
