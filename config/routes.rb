@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :players, only: [:index, :show, :create, :update]
   resources :courses, only: [:index, :show, :create]
   resources :holes, only: [:index, :show, :create, :update]
+  resources :scorecards, only: [:index, :show, :create]
   post "/auth/create", to: "auth#create"
   get "/auth/show", to: "auth#show"
 end
