@@ -6,8 +6,8 @@ class PlayersController < ApplicationController
     end
 
     def show
-        user = User.where(["user_name=?",params[:id]]).first
-        render json: user
+        player = Player.where(["id=?",params[:id]]).first
+        render json: player
     end
 
     def create
@@ -16,7 +16,9 @@ class PlayersController < ApplicationController
     end
 
     def update
-        player.assign_attributes(player_params)
+        player = Player.find(params[:id])
+        
+       player.assign_attributes(player_params)
         if player.valid?
             player.save
         end

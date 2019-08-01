@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :scorecards, only: [:index, :show, :create]
   post "/auth/create", to: "auth#create"
   get "/auth/show", to: "auth#show"
+  patch "/players/:id", to: "players#update"
 end
