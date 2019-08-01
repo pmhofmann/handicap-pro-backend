@@ -28,4 +28,4 @@ hole16 = Hole.create(course_id: ragc.id, hole_number: 16, yardage: 425, par: 4)
 hole17 = Hole.create(course_id: ragc.id, hole_number: 17, yardage: 218, par: 3)
 hole18 = Hole.create(course_id: ragc.id, hole_number: 18, yardage: 531, par: 5)
 
-scorecard1 = Scorecard.create(player_id: aiden.id, course_id: ragc.id)
+scorecard1 = Scorecard.create(player_id: aiden.id, course_id: ragc.id, date_played: "2019-01-01", score: 88)
